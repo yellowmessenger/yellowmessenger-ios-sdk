@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import CocoaLumberjack
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var xmppController:XMPPController
+    override init(){
+        try! self.xmppController = XMPPController(hostName: "xmpp.yellowmssngr.com",
+                                                  userJIDString: "aditya@xmpp.yellowmssngr.com",
+                                                  password: "Opened")
 
+        self.xmppController.connect()
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         return true
     }
 
@@ -40,7 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 
 
 }
+
 
